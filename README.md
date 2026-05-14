@@ -174,12 +174,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on the workflow, codin
 |---|---|
 | Ankita Kumari | [@Ankita15k](https://github.com/Ankita15k) |
 
-## 🎓 Mentors
-
-| Name | GitHub |
-|---|---|
-| Mentor Name | [@mentorgithub](https://github.com/mentorgithub) |
-
 ---
 
 ## 📄 License
