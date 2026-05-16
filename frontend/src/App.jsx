@@ -3,6 +3,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import { useAuthStore } from './store/authStore';
+import { useThemeStore } from './store/useThemeStore';
+import { useEffect } from 'react';
+import ThemeToggle from './components/ThemeToggle';
 import './App.css';
 
 
@@ -24,15 +27,30 @@ const Dashboard = () => {
 };
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+  const { isDarkMode } = useThemeStore();
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<Dashboard />} />
-      </Route>
-    </Routes>
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
+      <header className="p-4 flex justify-end border-b dark:border-gray-800">
+        <ThemeToggle />
+      </header>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<Dashboard />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
 
