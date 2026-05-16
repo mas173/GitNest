@@ -1,4 +1,3 @@
-```yml id="gitnest-other-issue"
 ---
 name: 💭 Other issue
 about: General discussions, suggestions, questions, or issues not covered by other templates
@@ -8,25 +7,25 @@ labels: discussion
 
 <!-- Thanks for contributing to GitNest 🚀 -->
 
-# Description
+## Description
 <!-- Clearly describe your question, suggestion, concern, or discussion topic. -->
 
 
-# Context / Background
+## Context / Background
 <!-- Provide any relevant background information, references, or related discussions. -->
 
-# Example:
+<!-- # Example:
 # - Related issues or PRs
 # - Existing limitations
 # - Previous implementation attempts
-# - Feature discussions
+# - Feature discussions -->
 
 
-# Expected Outcome
+## Expected Outcome
 <!-- Describe what response, clarification, or improvement you are expecting. -->
 
 
-# Checklist
+## Checklist
 <!-- Please confirm the following -->
 
 - [ ] I have checked existing issues before creating this one
@@ -34,7 +33,7 @@ labels: discussion
 - [ ] I am a GSSoC 2026 contributor
 
 
-# Screenshots / References (Optional)
+## Screenshots / References (Optional)
 <!-- Add screenshots, UI references, links, or additional resources if applicable. -->
-```
+
 <!-- Thank you for taking the time to contribute! 🙌 -->

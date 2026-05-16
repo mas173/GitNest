@@ -1,4 +1,3 @@
-```yml id="gitnest-feature-request"
 ---
 name: 💡 Feature request
 about: Suggest a new feature, enhancement, or improvement for GitNest
@@ -7,32 +6,32 @@ title: "FEATURE: "
 
 <!-- Thanks for contributing to GitNest 🚀 -->
 
-# Feature Summary
+## Feature Summary
 <!-- Provide a short and clear summary of the feature request. -->
 
 
-# Problem Statement
+## Problem Statement
 <!-- Describe the problem this feature would solve. -->
 
-# Example:
+<!--# Example:
 # - What limitation currently exists?
 # - What workflow feels inefficient?
-# - What user/developer pain point are you addressing?
+# - What user/developer pain point are you addressing? -->
 
 
-# Proposed Solution
+## Proposed Solution
 <!-- Clearly explain your proposed solution or implementation idea. -->
 
 
-# Possible Alternatives
+## Possible Alternatives
 <!-- Describe any alternative solutions or approaches you have considered. -->
 
 
-# Use Case
+## Use Case
 <!-- Explain how this feature would benefit contributors, developers, or end users. -->
 
 
-# Scope of Contribution
+## Scope of Contribution
 <!-- Mark all applicable options -->
 
 - [ ] Frontend
@@ -46,7 +45,7 @@ title: "FEATURE: "
 - [ ] UI/UX
 
 
-# Checklist
+## Checklist
 <!-- Please confirm the following -->
 
 - [ ] I have checked existing issues before creating this request
@@ -54,8 +53,8 @@ title: "FEATURE: "
 - [ ] I am a GSSoC 2026 contributor
 
 
-# Additional Context
+## Additional Context
 <!-- Optional -->
 <!-- Add mockups, screenshots, references, diagrams, or related links here. -->
-```
+
 <!-- Thank you for taking the time to contribute! 🙌 -->

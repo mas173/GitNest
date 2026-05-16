@@ -1,10 +1,14 @@
 # Contributing to GitNest ✨
 
-First off — **thank you** for considering contributing to GitNest! This project is part of **GSSoC 2026** and we welcome contributors of all skill levels.
+First of all — **Thank you** for considering contributing to GitNest! This project is part of **GSSoC 2026** and we welcome contributors of all skill levels.
 
-**Please Fork and STAR the repo**
-
-Please read this guide fully before making your first contribution. It will save you time and avoid your PR being rejected.
+<h3 align="center">
+  We appreciate your interest in contributing. 😊
+</h3>
+<h4 align="center">
+  This guide will help you get started with the project and make your first contribution.  
+  We're excited to welcome developers, designers, and testers of all levels.
+</h4>
 
 ---
 
@@ -46,52 +50,86 @@ By participating in this project, you agree to abide by our [Code of Conduct](./
 
 ## Getting Started
 
-### 1. Fork the repository
+1. ⭐ **Star** this repository.
 
-Click the **Fork** button at the top right of this page to create your own copy.
+2. 🍴 **Fork** this repository.
 
-### 2. Clone your fork
+3. 📥 **Clone** your fork:
+   ```bash
+   git clone https://github.com/<your-github-username>/GitNest.git
+   cd GitNest
+   ```
 
-```bash
-git clone https://github.com/<your-username>/GitNest.git
-cd GitNest
-```
+4. 🔗 **Add the upstream remote** so you can stay in sync:
+   ```bash
+   git remote add upstream https://github.com/Ankita15k/GitNest.git
+   ```
 
-### 3. Add the upstream remote
+5. ⚙️ **Set up the project locally:**
 
-```bash
-git remote add upstream https://github.com/Ankita15k/GitNest.git
-```
+   **Environment variables:**
+   ```bash
+   cp backend/.env.example backend/.env
+   # Open backend/.env and fill in your values
+   ```
 
-Verify with:
-```bash
-git remote -v
-# origin    https://github.com/<your-username>/GitNest.git (fetch)
-# upstream  https://github.com/Ankita15k/GitNest.git (fetch)
-```
+   **Install dependencies and start dev servers:**
+   ```bash
+   # Backend (in one terminal)
+   cd backend && npm install && npm run dev
 
-### 4. Set up the project
+   # Frontend (in a new terminal)
+   cd frontend && npm install && npm run dev
+   ```
 
-```bash
-# Copy environment variables
-cp server/.env.example server/.env
+   The app will be available at:
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:5000/api/v1
 
-# Install server dependencies
-cd backend && npm install
+   > ⚠️ Docker support is planned but not yet available. Make sure MongoDB and Redis are running locally before starting the servers.
 
-# Install Frontend dependencies
-cd ../frontend && npm install
-```
+6. 🌿 **Sync with upstream and create a new branch:**
+   ```bash
+   git checkout dev
+   git pull upstream dev
+   git checkout -b <your_branch_name>
+   ```
 
-### 5. Run the development servers
+   Name your branch following these conventions:
+   - `feat/add-user-profile`
+   - `fix/image-upload-bug`
+   - `docs/update-readme`
+   - `test/add-unit-tests-for-api`
+   - `chore/improve-ci-workflow`
 
-```bash
-# Terminal 1 — Backend
-cd backend && npm run dev
+7. ✏️ **Make your changes.**
 
-# Terminal 2 — Frontend
-cd frontend && npm run dev
-```
+8. 📝 **Stage and commit** using the [Conventional Commits](#commit-message-format) format:
+   ```bash
+   git add <changed_files>
+   git commit -m "type(scope): short summary"
+   ```
+
+9. 🚀 **Keep your branch up to date, then push:**
+   ```bash
+   # Before pushing, make sure your branch is current
+   git checkout dev
+   git pull upstream dev
+   git checkout <your_branch_name>
+   git merge dev
+
+   git push origin <your_branch_name>
+   ```
+
+10. 🔄 **Open a Pull Request** on GitHub targeting the `dev` branch of the upstream repo.
+
+11. 🎉 Congratulations — you've made your contribution!
+
+---
+
+## 💬 Support
+
+Feel free to raise your doubts in [Discussions](../../discussions).
 
 ---
 
@@ -258,10 +296,10 @@ Issues are tagged by difficulty. Points are awarded based on the label on the me
 
 | Label | Points |
 |---|---|
-| beginner  | 20  |
-| intermediate  | 35  |
-| advanced  | 55  |
-| critical  | 80  |
+| beginner | 20 |
+| intermediate | 35 |
+| advanced | 55 |
+| critical | 80 |
 
 > Points are only awarded for PRs merged into the `dev` or `main` branch. Closed PRs or PRs fixing issues not tagged `gssoc26` do not count.
 

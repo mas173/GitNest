@@ -14,9 +14,9 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/Ankita15k/GitNest)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Ankita15k/GitNest)
 
-## <img width="150" height="150" alt="Logo" src="https://github.com/user-attachments/assets/b4cf9a44-aa69-4256-bae9-7f67b5246278" />
+## <img width="120" height="110" alt="Logo" src="https://github.com/user-attachments/assets/b4cf9a44-aa69-4256-bae9-7f67b5246278" />
 
-#  GitNest - Lightweight Collaborative Code Hosting Platform
+# GitNest - Lightweight Collaborative Code Hosting Platform
 
 **A full-featured GitHub-inspired platform built with the MERN stack.**  
 Create repositories, browse code, manage issues, review pull requests, and collaborate — all in one open-source app.
@@ -50,7 +50,7 @@ Create repositories, browse code, manage issues, review pull requests, and colla
 
 | Layer | Technology |
 |---|---|
-| **Frontend** | React 18, Vite, TailwindCSS, Zustand, React Query|
+| **Frontend** | React 18, Vite, TailwindCSS, Zustand, React Query |
 | **Backend** | Node.js, Express.js |
 | **Database** | MongoDB + Mongoose |
 | **Cache** | Redis |
@@ -67,21 +67,22 @@ Create repositories, browse code, manage issues, review pull requests, and colla
 gitnest/
 ├── frontend/               # React + Vite frontend
 │   ├── src/
-│   │   ├── components/   # Reusable UI components
-│   │   ├── pages/        # Route-level page components
-│   │   ├── store/        # Zustand global state
-│   │   ├── hooks/        # Custom React hooks
-│   │   ├── api/          # Axios API layer
-│   │   └── utils/        # Helper functions
-├── backend/               # Express.js backend
-│   ├── config/           # DB, Redis connections
-│   ├── controllers/      # Route controllers
-│   ├── middleware/        # Auth, error handling, rate limiting
-│   ├── models/           # Mongoose schemas
-│   ├── routes/           # Express routers
-│   ├── services/         # Business logic, Socket.io
-│   └── utils/            # Logger, response helpers
-└── .github/              # Issue templates, workflows, PR template
+│   │   ├── components/     # Reusable UI components
+│   │   ├── pages/          # Route-level page components
+│   │   ├── store/          # Zustand global state
+│   │   ├── hooks/          # Custom React hooks
+│   │   ├── api/            # Axios API layer
+│   │   └── utils/          # Helper functions
+├── backend/                # Express.js backend
+│   ├── config/             # DB, Redis connections
+│   ├── controllers/        # Route controllers
+│   ├── middleware/          # Auth, error handling, rate limiting
+│   ├── models/             # Mongoose schemas
+│   ├── routes/             # Express routers
+│   ├── services/           # Business logic, Socket.io
+│   ├── utils/              # Logger, response helpers
+│   └── .env.example        # Environment variable template
+└── .github/               # Issue templates, workflows, PR template
 ```
 
 ---
@@ -109,18 +110,11 @@ cd gitnest
 **2. Set up environment variables**
 
 ```bash
-cp server/.env.example server/.env
-# Open server/.env and fill in your values
+cp backend/.env.example backend/.env
+# Open backend/.env and fill in your values
 ```
 
-**3. Start the full dev stack with Docker**
-
-```bash
-docker compose up
-# This starts MongoDB, Redis, and Minio automatically
-```
-
-**4. Install dependencies and run**
+**3. Install dependencies and run**
 
 ```bash
 # Backend
@@ -130,11 +124,13 @@ cd backend && npm install && npm run dev
 cd frontend && npm install && npm run dev
 ```
 
-**5. Open the app**
+**4. Open the app**
 
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:5000/api/v1
 - Health check: http://localhost:5000/health
+
+> ⚠️ **Docker support is planned but not yet available.** A `docker-compose.yml` for running MongoDB, Redis, and the app together is on the roadmap. For now, please use the local setup steps above and ensure MongoDB and Redis are running on your machine before starting the servers.
 
 ---
 
@@ -163,15 +159,27 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on the workflow, codin
 - [ ] Search
 - [ ] Real-time notifications
 - [ ] Tests (unit + integration)
+- [ ] Docker setup (docker-compose for full stack)
 - [ ] Deployment & CI/CD
 
 ---
 
-## 👩🏻‍💻 Project Admin
+## 🌟 Project Admin
 
-| Name | GitHub |
-|---|---|
-| Ankita Kumari | [@Ankita15k](https://github.com/Ankita15k) |
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/Ankita15k"><img src="https://github.com/Ankita15k.png" height="140px" width="140px" alt="Ankita Kumari"></a><br><sub><b>Project Admin - Ankita kumari</b></sub>
+</tr>
+</table>
+
+## 🙌 Project Contributors
+
+A huge thank you to everyone who has contributed to GitNest!
+
+<a href="https://github.com/Ankita15k/GitNest/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Ankita15k/GitNest&cache_burst=1" />
+</a>
 
 ---
 
