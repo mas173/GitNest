@@ -164,25 +164,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on the workflow, codin
 
 ---
 
-## 🌟 Project Admin
-
-<table>
-<tr>
-<td align="center">
-<a href="https://github.com/Ankita15k"><img src="https://github.com/Ankita15k.png" height="140px" width="140px" alt="Ankita Kumari"></a><br><sub><b>Project Admin - Ankita kumari</b></sub>
-</tr>
-</table>
-
-## 🙌 Project Contributors
-
-A huge thank you to everyone who has contributed to GitNest!
-
-<a href="https://github.com/Ankita15k/GitNest/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Ankita15k/GitNest&cache_burst=1" />
-</a>
-
----
-
 ## 📄 License
 
 This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
