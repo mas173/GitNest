@@ -7,7 +7,7 @@ First of all — **Thank you** for considering contributing to GitNest! This pro
 </h3>
 <h4 align="center">
   This guide will help you get started with the project and make your first contribution.  
-  We’re excited to welcome developers, designers, and testers of all levels.
+  We're excited to welcome developers, designers, and testers of all levels.
 </h4>
 
 ---
@@ -55,58 +55,81 @@ By participating in this project, you agree to abide by our [Code of Conduct](./
 2. 🍴 **Fork** this repository.
 
 3. 📥 **Clone** your fork:
-   ```
+   ```bash
    git clone https://github.com/<your-github-username>/GitNest.git
    cd GitNest
    ```
 
-4. Set up the project
+4. 🔗 **Add the upstream remote** so you can stay in sync:
+   ```bash
+   git remote add upstream https://github.com/Ankita15k/GitNest.git
+   ```
 
-5. 🔗 Set upstream to the main repo:
-    ```
-    git remote add upstream https://github.com/Ankita15k/GitNest.git
-    ```
-6. 🌿 Create a new branch:
-    ```
-    git checkout -b <your_branch_name>
-    ```
-    Name branch like: 
-    - feat/cross-reference-feature
-    - fix/image-upload-bug
-    - docs/update-readme
-    - test/add-unit-tests-for-api
-    - chore/improve-ci-workflow
+5. ⚙️ **Set up the project locally:**
 
-7. ✏️ Make your changes.
+   **Environment variables:**
+   ```bash
+   cp backend/.env.example backend/.env
+   # Open backend/.env and fill in your values
+   ```
 
-8. 📝 Stage and commit:
-    ```
-    git add <changed_files>
-    git commit -m "<your_commit_message>"
-    ```
-9. 🚀 Push your branch:
-    ```
-    git push origin <your_branch_name>
-    ```
+   **Install dependencies and start dev servers:**
+   ```bash
+   # Backend (in one terminal)
+   cd backend && npm install && npm run dev
 
-10. 🔄 Open a Pull Request on GitHub.
+   # Frontend (in a new terminal)
+   cd frontend && npm install && npm run dev
+   ```
 
-    **Before creating a Pull Request** Make sure your branch is up to date with the latest changes from the upstream main branch:
+   The app will be available at:
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:5000/api/v1
 
-    ```
-    git checkout main
-    git pull upstream main
-    git checkout <your_branch_name>
-    git merge main
-    ```
+   > ⚠️ Docker support is planned but not yet available. Make sure MongoDB and Redis are running locally before starting the servers.
 
-11. 🎉 Congratulations! you've made your contribution.
+6. 🌿 **Sync with upstream and create a new branch:**
+   ```bash
+   git checkout dev
+   git pull upstream dev
+   git checkout -b <your_branch_name>
+   ```
 
+   Name your branch following these conventions:
+   - `feat/add-user-profile`
+   - `fix/image-upload-bug`
+   - `docs/update-readme`
+   - `test/add-unit-tests-for-api`
+   - `chore/improve-ci-workflow`
 
+7. ✏️ **Make your changes.**
+
+8. 📝 **Stage and commit** using the [Conventional Commits](#commit-message-format) format:
+   ```bash
+   git add <changed_files>
+   git commit -m "type(scope): short summary"
+   ```
+
+9. 🚀 **Keep your branch up to date, then push:**
+   ```bash
+   # Before pushing, make sure your branch is current
+   git checkout dev
+   git pull upstream dev
+   git checkout <your_branch_name>
+   git merge dev
+
+   git push origin <your_branch_name>
+   ```
+
+10. 🔄 **Open a Pull Request** on GitHub targeting the `dev` branch of the upstream repo.
+
+11. 🎉 Congratulations — you've made your contribution!
+
+---
 
 ## 💬 Support
 
-Feel Free to raise your doubts in discussion.
+Feel free to raise your doubts in [Discussions](../../discussions).
 
 ---
 
@@ -273,10 +296,10 @@ Issues are tagged by difficulty. Points are awarded based on the label on the me
 
 | Label | Points |
 |---|---|
-| beginner  | 20  |
-| intermediate  | 35  |
-| advanced  | 55  |
-| critical  | 80  |
+| beginner | 20 |
+| intermediate | 35 |
+| advanced | 55 |
+| critical | 80 |
 
 > Points are only awarded for PRs merged into the `dev` or `main` branch. Closed PRs or PRs fixing issues not tagged `gssoc26` do not count.
 
