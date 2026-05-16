@@ -1,10 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import NotFound from './pages/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 import { useAuthStore } from './store/authStore';
 import './App.css';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import GitNestHomepage from './pages/GitNestHomepage';
+import NotFound from './pages/NotFound';
 
 
 const Dashboard = () => {
@@ -29,9 +30,10 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/" element={<GitNestHomepage />}/>
 
       <Route element={<ProtectedRoute />}>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Route>
       
       <Route path="*" element={<NotFound />} />
