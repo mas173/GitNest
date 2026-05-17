@@ -70,8 +70,13 @@ By participating in this project, you agree to abide by our [Code of Conduct](./
 
    **Environment variables:**
    ```bash
+   # Backend env variables
    cp backend/.env.example backend/.env
    # Open backend/.env and fill in your values
+
+   # Frontend env variables
+   cp frontend/.env.example frontend/.env
+   # Open frontend/.env and fill in your values
    ```
 
    **Install dependencies and start dev servers:**

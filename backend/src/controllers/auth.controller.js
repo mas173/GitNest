@@ -20,15 +20,18 @@ export const register = asyncHandler(async (req, res, next) => {
     return next(new AppError('Please provide username, email and password', 400));
   }
 
-  const userExists = await User.findOne({ $or: [{ email }, { username }] });
+  const lowercaseEmail = email.toLowerCase();
+  const lowercaseUsername = username.toLowerCase();
+
+  const userExists = await User.findOne({ $or: [{ email: lowercaseEmail }, { username: lowercaseUsername }] });
 
   if (userExists) {
     return next(new AppError('User already exists', 400));
   }
 
   const user = await User.create({
-    username,
-    email,
+    username: lowercaseUsername,
+    email: lowercaseEmail,
     password,
   });
 
@@ -49,7 +52,9 @@ export const login = asyncHandler(async (req, res, next) => {
     return next(new AppError('Please provide an email and password', 400));
   }
 
-  const user = await User.findOne({ email }).select('+password');
+  const lowercaseEmail = email.toLowerCase();
+
+  const user = await User.findOne({ email: lowercaseEmail }).select('+password');
 
   if (!user || !(await user.matchPassword(password))) {
     return next(new AppError('Invalid credentials', 401));

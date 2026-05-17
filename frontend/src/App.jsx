@@ -9,6 +9,8 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import GitNestHomepage from './pages/GitNestHomepage';
 import NotFound from './pages/NotFound';
+import PullRequestsPage from './pages/PullRequestsPage';
+import PullRequestDetailPage from './pages/PullRequestDetailPage';
 
 
 const Dashboard = () => {
@@ -47,12 +49,14 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<GitNestHomepage />}/>
+        <Route path="/" element={<GitNestHomepage />} />
+        <Route path="/pull-requests" element={<PullRequestsPage />} />
+        <Route path="/pull-requests/:id" element={<PullRequestDetailPage />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
-        
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

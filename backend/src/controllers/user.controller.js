@@ -21,7 +21,7 @@ export const getUserProfile = asyncHandler(async (req, res, next) => {
 
   // Fallback to finding by username if not found by ID or if ID was invalid
   if (!user) {
-    user = await User.findOne({ username });
+    user = await User.findOne({ username: username.toLowerCase() });
   }
 
   if (!user) {

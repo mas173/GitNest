@@ -114,8 +114,13 @@ cd gitnest
 **2. Set up environment variables**
 
 ```bash
+# Backend env variables
 cp backend/.env.example backend/.env
 # Open backend/.env and fill in your values
+
+# Frontend env variables
+cp frontend/.env.example frontend/.env
+# Open frontend/.env and fill in your values
 ```
 
 **3. Install dependencies and run**
@@ -134,7 +139,18 @@ cd frontend && npm install && npm run dev
 - Backend API: http://localhost:5000/api/v1
 - Health check: http://localhost:5000/health
 
-> ⚠️ **Docker support is planned but not yet available.** A `docker-compose.yml` for running MongoDB, Redis, and the app together is on the roadmap. For now, please use the local setup steps above and ensure MongoDB and Redis are running on your machine before starting the servers.
+### Docker Setup (Recommended)
+
+You can easily run the entire application (Frontend, Backend, MongoDB, Redis) using Docker.
+
+1. Ensure Docker Desktop is running.
+2. Run the following command in the root of the project:
+   ```bash
+   docker-compose up --build
+   ```
+3. The application will be available at:
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:5000/api/v1
 
 ---
 
@@ -409,7 +425,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for full details on the workflow, codin
 - [ ] Search
 - [ ] Real-time notifications
 - [ ] Tests (unit + integration)
-- [ ] Docker setup (docker-compose for full stack)
+- [x] Docker setup (docker-compose for full stack)
 - [ ] Deployment & CI/CD
 
 ---
