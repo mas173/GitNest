@@ -79,7 +79,7 @@ export default function GitNestHomepage() {
                         <a href="#workflow" className="hover:text-white transition-colors">
                             Workflow
                         </a>
-                        <a href="#opensource" className="hover:text-white transition-colors">
+                        <a href="#contributors" className="hover:text-white transition-colors">
                             Open Source
                         </a>
                         <a href="#contributors" className="hover:text-white transition-colors">
