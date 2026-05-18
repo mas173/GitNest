@@ -44,6 +44,7 @@ By participating in this project, you agree to abide by our [Code of Conduct](./
 4. **Wait to be assigned** — do not start working until you are assigned
 5. If you don't hear back within 48 hours, ping the admin in the issue comment
 
+> ⚠️ CRITICAL: Do NOT open a Pull Request without an open, assigned issue. Unsolicited PRs will be closed automatically.
 > ⚠️ PRs for unassigned issues will not be reviewed and may be closed without merging.
 
 ---
@@ -69,8 +70,13 @@ By participating in this project, you agree to abide by our [Code of Conduct](./
 
    **Environment variables:**
    ```bash
+   # Backend env variables
    cp backend/.env.example backend/.env
    # Open backend/.env and fill in your values
+
+   # Frontend env variables
+   cp frontend/.env.example frontend/.env
+   # Open frontend/.env and fill in your values
    ```
 
    **Install dependencies and start dev servers:**

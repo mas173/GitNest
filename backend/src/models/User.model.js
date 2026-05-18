@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Please add a username'],
       unique: true,
       trim: true,
+      lowercase: true,
     },
     email: {
       type: String,
@@ -17,6 +18,7 @@ const userSchema = new mongoose.Schema(
         /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
         'Please add a valid email',
       ],
+      lowercase: true,
     },
     password: {
       type: String,
@@ -32,13 +34,21 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: '',
     },
+    location: {
+      type: String,
+      default: '',
+    },
+    website: {
+      type: String,
+      default: '',
+    },
   },
   { timestamps: true }
 );
 
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
-    next();
+    return next();
   }
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
