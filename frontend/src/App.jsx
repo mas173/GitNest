@@ -4,6 +4,7 @@ import { useAuthStore } from './store/authStore';
 import { useThemeStore } from './store/useThemeStore';
 import { useEffect } from 'react';
 import ThemeToggle from './components/ThemeToggle';
+import ToastContainer from './components/ui/ToastContainer';
 import './App.css';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <div className="min-h-screen">
+      <ToastContainer />
       <header className="p-4 flex justify-end border-b border-zinc-200 dark:border-zinc-800 transition-colors">
         <ThemeToggle />
       </header>

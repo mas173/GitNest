@@ -15,3 +15,18 @@
 :root {
   color-scheme: light dark;
 }
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.2s ease-out both;
+}

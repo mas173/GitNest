@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuthStore } from '../../store/authStore';
+import { useToastStore } from '../../store/useToastStore';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
@@ -10,6 +11,7 @@ const Register = () => {
   });
 
   const { register, loading, error, clearError } = useAuthStore();
+  const addToast = useToastStore((s) => s.addToast);
   const navigate = useNavigate();
   useEffect(() => {
     clearError();
@@ -22,9 +24,12 @@ const Register = () => {
     e.preventDefault();
     try {
       await register(formData);
+      addToast({ message: 'Account created successfully! Welcome aboard.', type: 'success' });
       navigate('/');
     } catch (err) {
-      console.error(err);
+      const data = err.response?.data;
+      const message = typeof data === 'string' ? data : data?.message;
+      addToast({ message: message || 'Registration failed. Please try again.', type: 'error' });
     }
   };
 
@@ -44,8 +49,11 @@ const Register = () => {
                 name="username"
                 type="text"
                 required
+                minLength={3}
+                pattern="^[a-zA-Z0-9_]+$"
+                title="3+ characters, letters, numbers, and underscores only"
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-800 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-colors"
-                placeholder="Username"
+                placeholder="Username (min. 3 chars, letters/numbers/_)"
                 value={formData.username}
                 onChange={handleChange}
               />
@@ -66,8 +74,9 @@ const Register = () => {
                 name="password"
                 type="password"
                 required
+                minLength={6}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-800 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition-colors"
-                placeholder="Password"
+                placeholder="Password (min. 6 characters)"
                 value={formData.password}
                 onChange={handleChange}
               />
