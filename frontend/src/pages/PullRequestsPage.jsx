@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { GitPullRequest, GitMerge, XCircle, Search, SlidersHorizontal } from 'lucide-react';
+import { GitPullRequest, XCircle, Search, SlidersHorizontal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PRCard from '../components/PRCard';
 
