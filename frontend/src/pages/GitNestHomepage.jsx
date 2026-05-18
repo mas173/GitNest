@@ -12,7 +12,7 @@
         ArrowRight,
     } from "lucide-react";
     import { Link } from 'react-router-dom';
-
+    import logo from "../assets/logo.png";
     export default function GitNestHomepage() {
         const features = [
             {
@@ -58,7 +58,7 @@
                         <div className="flex items-center gap-3 cursor-pointer select-none">
                             <div className="w-11 h-11 rounded-2xl bg-zinc-100 dark:bg-white flex items-center justify-center overflow-hidden shadow-2xl shadow-emerald-500/20 border border-zinc-200 dark:border-white/10 p-1">
                                 <img
-                                    src="./logo.png"
+                                    src={logo}
                                     alt="GitNest Logo"
                                     className="w-full h-full object-contain"
                                 />
@@ -311,7 +311,7 @@
                             <div className="flex items-center gap-3 mb-5">
                                 <div className="w-11 h-11 rounded-2xl bg-zinc-100 dark:bg-white flex items-center justify-center overflow-hidden border border-zinc-200 dark:border-white/10 p-1">
                                     <img
-                                        src="/logo.png"
+                                        src={logo}
                                         alt="GitNest Logo"
                                         className="w-full h-full object-contain"
                                     />
