@@ -14,22 +14,22 @@ export default function GitNestHomepage() {
         {
             title: "Version Control",
             desc: "Create repositories, branches, pull requests, and commits with a modern collaborative workflow.",
-            icon: <GitBranch className="w-7 h-7 text-emerald-400" />,
+            icon: <GitBranch className="w-7 h-7 text-emerald-500 dark:text-emerald-400" />,
         },
         {
             title: "AI Workflows",
             desc: "AI-assisted code reviews, commit summaries, onboarding, and contributor guidance.",
-            icon: <Sparkles className="w-7 h-7 text-emerald-400" />,
+            icon: <Sparkles className="w-7 h-7 text-emerald-500 dark:text-emerald-400" />,
         },
         {
             title: "Team Collaboration",
             desc: "Built for contributors, maintainers, and open-source teams working together.",
-            icon: <Users className="w-7 h-7 text-emerald-400" />,
+            icon: <Users className="w-7 h-7 text-emerald-500 dark:text-emerald-400" />,
         },
         {
             title: "Developer First",
             desc: "Clean APIs, scalable architecture, and a contributor-friendly structure from day one.",
-            icon: <ShieldCheck className="w-7 h-7 text-emerald-400" />,
+            icon: <ShieldCheck className="w-7 h-7 text-emerald-500 dark:text-emerald-400" />,
         },
     ];
 
@@ -78,16 +78,16 @@ export default function GitNestHomepage() {
                     </div>
 
                     <nav className="hidden md:flex items-center gap-8 text-sm text-zinc-600 dark:text-zinc-400">
-                        <a href="#features" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
+                        <a href="#features" className="hover:text-emerald-500 dark:hover:text-white transition-colors">
                             Features
                         </a>
-                        <a href="#workflow" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
+                        <a href="#workflow" className="hover:text-emerald-500 dark:hover:text-white transition-colors">
                             Workflow
                         </a>
-                        <a href="#opensource" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
+                        <a href="#opensource" className="hover:text-emerald-500 dark:hover:text-white transition-colors">
                             Open Source
                         </a>
-                        <a href="#contributors" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
+                        <a href="#contributors" className="hover:text-emerald-500 dark:hover:text-white transition-colors">
                             Contributors
                         </a>
                     </nav>
@@ -96,11 +96,17 @@ export default function GitNestHomepage() {
                             {isDarkMode ? '🌞 Light' : '🌙 Dark'}
                         </button>
                         <div className="flex items-center gap-3">
-                            <button className="hidden sm:flex px-4 py-2 rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/[0.06] transition-all">
+                            <Link
+                                to="/docs"
+                                className="hidden sm:flex px-4 py-2 rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/[0.06] transition-all"
+                            >
                                 Documentation
-                            </button>
+                            </Link>
 
-                            <Link to="/register" className="px-5 py-2 rounded-xl bg-emerald-400 text-black font-semibold text-sm hover:scale-[1.02] transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+                            <Link
+  to="/register"
+  className="px-5 py-2 rounded-xl bg-emerald-400 text-black font-semibold text-sm hover:scale-[1.02] hover:shadow-xl active:scale-[0.98] transition-all duration-300 shadow-lg shadow-emerald-500/20 flex items-center gap-2"
+>
                                 Start Contributing
                                 <ArrowRight className="w-4 h-4" />
                             </Link>
@@ -119,19 +125,22 @@ export default function GitNestHomepage() {
                             Open Source • GSSoC 2026
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight mb-8">
+                        <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-8">
                             Build the future of
                             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-400">
                                 collaborative coding
                             </span>
                         </h1>
 
-                        <p className="text-lg text-zinc-400 leading-8 max-w-2xl mb-10">
+                        <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-8 max-w-2xl mb-10">
                             GitNest is a full-featured GitHub-inspired platform built with the MERN stack. Create repositories, browse code, manage issues, review pull requests, and collaborate — all in one open-source developer ecosystem.
                         </p>
 
                         <div className="flex flex-wrap gap-4 mb-14">
-                            <Link to="/login" className="px-7 py-4 rounded-2xl bg-emerald-400 text-black font-semibold hover:scale-[1.02] transition-all shadow-xl shadow-emerald-500/20 inline-block text-center">
+                            <Link
+  to="/login"
+  className="px-7 py-4 rounded-2xl bg-emerald-400 text-black font-semibold hover:scale-[1.02] hover:shadow-2xl active:scale-[0.98] transition-all duration-300 shadow-xl shadow-emerald-500/20 inline-block text-center"
+>
                                 Explore Repositories
                             </Link>
 
@@ -144,7 +153,15 @@ export default function GitNestHomepage() {
                             {stats.map((item) => (
                                 <div
                                     key={item.label}
-                                    className="rounded-2xl border border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-white/[0.03] p-5"
+                                    className="
+rounded-2xl
+border border-zinc-200 dark:border-white/5
+bg-zinc-50 dark:bg-white/[0.03]
+p-5
+hover:-translate-y-1
+hover:shadow-lg
+transition-all duration-300
+"
                                 >
                                     <h3 className="text-2xl font-black text-zinc-900 dark:text-white mb-1">
                                         {item.value}
@@ -159,7 +176,7 @@ export default function GitNestHomepage() {
                     <div className="relative">
                         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 blur-3xl rounded-full" />
 
-                        <div className="relative rounded-3xl border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-[#0d1016]/80 backdrop-blur-xl overflow-hidden shadow-2xl shadow-black/40">
+                        <div className="relative rounded-3xl border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-[#0d1016]/80 backdrop-blur-xl overflow-hidden shadow-xl shadow-zinc-300/40 dark:shadow-black/40">
                             {/* Window Header */}
                             <div className="h-14 border-b border-zinc-200 dark:border-white/5 flex items-center justify-between px-6 bg-zinc-100 dark:bg-white/[0.02]">
                                 <div className="flex items-center gap-2">
@@ -221,7 +238,7 @@ export default function GitNestHomepage() {
                                         >
                                             <div className="flex items-center gap-3 min-w-0">
                                                 <div className="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0" />
-                                                <p className="text-sm text-zinc-300 truncate">{item}</p>
+                                                <p className="text-sm text-zinc-700 dark:text-zinc-300 truncate">{item}</p>
                                             </div>
 
                                             <span className="text-xs text-zinc-600">2h ago</span>
@@ -235,7 +252,10 @@ export default function GitNestHomepage() {
             </section>
 
             {/* Features */}
-            <section id="features" className="relative py-28 border-t border-zinc-200 dark:border-white/5">
+            <section
+  id="features"
+  className="relative py-28 border-t border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-transparent"
+>
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="max-w-3xl mb-16">
                         <p className="text-emerald-400 text-sm font-semibold tracking-widest uppercase mb-4">
@@ -256,7 +276,19 @@ export default function GitNestHomepage() {
                         {features.map((feature) => (
                             <div
                                 key={feature.title}
-                                className="group rounded-3xl border border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-white/[0.03] p-7 hover:border-emerald-400/20 hover:bg-zinc-100 dark:hover:bg-white/[0.05] transition-all duration-300"
+                                className="
+group
+rounded-3xl
+border border-zinc-200 dark:border-white/5
+bg-white dark:bg-white/[0.03]
+p-7
+shadow-sm
+hover:shadow-xl
+hover:-translate-y-1
+hover:border-emerald-400/20
+dark:hover:bg-white/[0.05]
+transition-all duration-300
+"
                             >
                                 <div className="w-14 h-14 rounded-2xl bg-emerald-400/10 border border-emerald-400/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                                     {feature.icon}
@@ -298,7 +330,10 @@ export default function GitNestHomepage() {
                             </p>
 
                             <div className="flex flex-wrap justify-center gap-4">
-                                <Link to="/register" className="px-7 py-4 rounded-2xl bg-emerald-400 text-black font-semibold hover:scale-[1.02] transition-all shadow-xl shadow-emerald-500/20 inline-block text-center">
+                                <Link
+  to="/register"
+  className="px-7 py-4 rounded-2xl bg-emerald-400 text-black font-semibold hover:scale-[1.02] hover:shadow-2xl active:scale-[0.98] transition-all duration-300 shadow-xl shadow-emerald-500/20 inline-block text-center"
+>
                                     Contribute Now
                                 </Link>
 
@@ -344,16 +379,16 @@ export default function GitNestHomepage() {
                         <h4 className="font-semibold mb-5">Platform</h4>
 
                         <div className="space-y-3 text-sm text-zinc-500">
-                            <a href="#" className="block hover:text-white transition-colors">
+                            <a href="#" className="block hover:text-zinc-900 dark:hover:text-white transition-colors">
                                 Repositories
                             </a>
-                            <a href="#" className="block hover:text-white transition-colors">
+                            <a href="#" className="block hover:text-zinc-900 dark:hover:text-white transition-colors">
                                 Pull Requests
                             </a>
-                            <a href="#" className="block hover:text-white transition-colors">
+                            <a href="#" className="block hover:text-zinc-900 dark:hover:text-white transition-colors">
                                 AI Workflows
                             </a>
-                            <a href="#" className="block hover:text-white transition-colors">
+                            <a href="#" className="block hover:text-zinc-900 dark:hover:text-white transition-colors">
                                 Discussions
                             </a>
                         </div>
@@ -363,16 +398,16 @@ export default function GitNestHomepage() {
                         <h4 className="font-semibold mb-5">Developers</h4>
 
                         <div className="space-y-3 text-sm text-zinc-500">
-                            <a href="#" className="block hover:text-white transition-colors">
+                            <a href="#" className="block hover:text-zinc-900 dark:hover:text-white transition-colors">
                                 Contribution Guide
                             </a>
-                            <a href="#" className="block hover:text-white transition-colors">
+                            <a href="#" className="block hover:text-zinc-900 dark:hover:text-white transition-colors">
                                 Roadmap
                             </a>
-                            <a href="#" className="block hover:text-white transition-colors">
+                            <a href="#" className="block hover:text-zinc-900 dark:hover:text-white transition-colors">
                                 API Docs
                             </a>
-                            <a href="#" className="block hover:text-white transition-colors">
+                            <a href="#" className="block hover:text-zinc-900 dark:hover:text-white transition-colors">
                                 Architecture
                             </a>
                         </div>
@@ -407,13 +442,13 @@ export default function GitNestHomepage() {
                     <p>© 2026 GitNest. Built for open-source collaboration.</p>
 
                     <div className="flex items-center gap-6">
-                        <a href="#" className="hover:text-white transition-colors">
+                        <a href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
                             Privacy
                         </a>
-                        <a href="#" className="hover:text-white transition-colors">
+                        <a href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
                             Terms
                         </a>
-                        <a href="#" className="hover:text-white transition-colors">
+                        <a href="#" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
                             GitHub
                         </a>
                     </div>
