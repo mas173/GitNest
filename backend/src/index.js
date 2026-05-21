@@ -25,7 +25,6 @@ app.use(cors({
   credentials: true,
 }));
 // Middleware
-app.use(cors());
 app.use(express.json());
 app.use(mongoSanitize());
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
