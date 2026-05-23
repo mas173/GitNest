@@ -1,5 +1,6 @@
 import { validationResult } from 'express-validator';
 import AppError from '../utils/AppError.js';
+import ERROR_CODES from '../constants/errorCodes.js';
 
 /**
  * Centralized validation result handler using express-validator
@@ -15,7 +16,7 @@ const validateRequest = (req, res, next) => {
       message: error.msg,
     }));
 
-    const appError = new AppError('Validation failed', 400);
+    const appError = new AppError('Validation failed', 400, ERROR_CODES.VALIDATION_ERROR);
     appError.errors = formattedErrors;
     return next(appError);
   }

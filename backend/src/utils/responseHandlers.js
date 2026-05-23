@@ -1,42 +1,59 @@
 /**
  * Send standardized success response
- * Format: { success: true, message: string, data: any }
+ * Format: { success: true, message, data, requestId? }
  */
 export const sendSuccess = (res, statusCode, data, message = 'Success') => {
-  res.status(statusCode).json({
+  const payload = {
     success: true,
     message,
     data,
-  });
+  };
+
+  if (res.locals?.requestId) {
+    payload.requestId = res.locals.requestId;
+  }
+
+  res.status(statusCode).json(payload);
 };
 
 /**
  * Send paginated success response
- * Format: { success: true, message: string, data: array, pagination: object }
  */
 export const sendPaginated = (res, statusCode, data, pagination, message = 'Success') => {
-  res.status(statusCode).json({
+  const payload = {
     success: true,
     message,
     data,
     pagination,
-  });
+  };
+
+  if (res.locals?.requestId) {
+    payload.requestId = res.locals.requestId;
+  }
+
+  res.status(statusCode).json(payload);
 };
 
 /**
- * Send error response (used by error handler)
- * Format: { success: false, message: string, errors?: array }
+ * Send standardized error response
  */
-export const sendError = (res, statusCode, message, errors = null) => {
-  const errorResponse = {
-    success: false,
-    message,
-  };
-
-  if (errors && Array.isArray(errors) && errors.length > 0) {
-    errorResponse.errors = errors;
+export const sendError = (
+  res,
+  {
+    statusCode = 500,
+    code = 'SERVER_ERROR',
+    message = 'Something went wrong',
+    errors = [],
+    requestId = null,
   }
-
-  res.status(statusCode).json(errorResponse);
+) => {
+  res.status(statusCode).json({
+    success: false,
+    statusCode,
+    code,
+    message,
+    requestId: requestId || res.locals?.requestId || null,
+    errors: Array.isArray(errors) ? errors : [],
+    timestamp: new Date().toISOString(),
+  });
 };
-

@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import ErrorBoundary from './components/ui/ErrorBoundary.jsx';
 import ProtectedRoute from './components/ProtectedRoute';
 import { useAuthStore } from './store/authStore';
 import { useThemeStore } from './store/useThemeStore';
@@ -14,6 +15,7 @@ import PullRequestsPage from './pages/PullRequestsPage';
 import PullRequestDetailPage from './pages/PullRequestDetailPage';
 import UserProfile from './pages/UserProfile';
 import ActivityFeedPage from './pages/ActivityFeed.jsx';
+import ComponentShowcase from './pages/ComponentShowcase.jsx';
 
 const Dashboard = () => {
   const { user, logout } = useAuthStore();
@@ -46,9 +48,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <ToastContainer />
-      <header className="p-4 flex justify-end border-b border-zinc-200 dark:border-zinc-800 transition-colors">
-      
-      </header>
+      <ErrorBoundary>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -58,6 +58,7 @@ function App() {
         <Route path="/pull-requests/:id" element={<PullRequestDetailPage />} />
         <Route path="/activities" element={<ActivityFeedPage />} />
         <Route path="/:username" element={<UserProfile />} />
+        <Route path="/showcase" element={<ComponentShowcase />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
@@ -65,6 +66,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </ErrorBoundary>
     </div>
   );
 }

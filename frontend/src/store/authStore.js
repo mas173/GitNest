@@ -15,13 +15,13 @@ const extractUserData = (responseData) => {
 };
 
 /**
- * Helper function to extract error message from API error response
+ * Extract message from normalized API errors
  */
 const extractErrorMessage = (error) => {
-  if (error.response?.data?.errors && Array.isArray(error.response.data.errors)) {
-    return error.response.data.errors.map((err) => err.message).join(', ');
+  if (error?.errors && Array.isArray(error.errors) && error.errors.length > 0) {
+    return error.errors.map((err) => err.message).join(', ');
   }
-  return error.response?.data?.message || error.message || 'An error occurred';
+  return error?.message || 'An error occurred';
 };
 
 export const useAuthStore = create(

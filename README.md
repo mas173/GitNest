@@ -54,6 +54,56 @@ Create repositories, browse code, manage issues, review pull requests, and colla
 |------------|------------|------------|
 |<img height="1000" alt="image" src="https://github.com/user-attachments/assets/be8f7a4a-df2b-4d98-8df7-456de9b5b2d5" /> | <img height="1000" alt="image" src="https://github.com/user-attachments/assets/1fa87b65-23ba-4896-9594-36643af2cf01" />|<img width="1919" height="1078" alt="image" src="https://github.com/user-attachments/assets/5d0afdfe-69a5-4ca1-8a18-c1574d4f82f5" />|
 
+### Component Showcase
+
+GitNest features a comprehensive set of reusable UI components with **full dark mode support**. All components are built with TailwindCSS and leverage React hooks for optimal performance.
+
+#### Empty States
+The platform includes elegant empty state components that guide users when no data is available:
+
+| Empty Repository | Empty Issues | Empty Pull Requests |
+|---|---|---|
+| Shown when user has no repositories | Shown when repository has no issues | Shown when repository has no PRs |
+| Encourages users to create their first repo | Prompts users to create an issue | Prompts users to create a PR |
+
+#### Stat Cards
+Repository statistics are displayed using responsive stat card components:
+
+```
+Stars    │ Forks    │ Watchers │ Language
+1,234    │   456    │   789    │ TypeScript
+```
+
+Each stat card is fully customizable with different variants (primary, success, warning, danger) and includes icons from Lucide React.
+
+#### User Cards
+User profile cards display:
+- User avatar and profile information
+- Bio and location details
+- Account age
+- Follower/following counts
+- Follow/Unfollow functionality
+- Quick action menu
+
+#### Loading States
+While data loads, skeleton components provide visual feedback:
+- **StatCardSkeleton** — Animated loader for stat cards
+- **UserCardSkeleton** — Full user card placeholder with shimmer effect
+
+### Dark Mode
+
+All components support **seamless light and dark themes**:
+
+```
+Light Theme          │  Dark Theme
+White backgrounds    │  Dark slate backgrounds
+Dark text           │  Light text
+Light borders       │  Dark borders
+```
+
+The dark mode is implemented using TailwindCSS `dark:` variants, ensuring perfect consistency across the entire platform.
+
+**View Component Showcase:** Navigate to `/showcase` to see all components in action with a live theme toggle!
 
 ---
 
@@ -110,6 +160,58 @@ gitnest/
         ├── hooks/         
         ├── api/         
         └── utils    
+## 🎨 UI Components
+
+GitNest includes a comprehensive component library with full dark mode support:
+
+### Empty States
+- **EmptyRepository** — Shows when no repositories exist
+- **EmptyIssues** — Shows when no issues exist  
+- **EmptyPullRequests** — Shows when no PRs exist
+
+### Cards & Stats
+- **StatCard** — Generic stat display with customizable icon and variant
+- **RepoStars, RepoForks, RepoWatchers, RepoLanguage** — Pre-configured stat cards
+- **UserCard** — User profile card with bio, stats, and follow functionality
+
+### Loading & Skeletons
+- **StatCardSkeleton** — Animated loader for stat cards
+- **UserCardSkeleton** — User card placeholder with shimmer effect
+- **RepoSkeleton** — Repository list loader
+
+**All components support full dark/light mode switching via TailwindCSS.**
+
+For complete component documentation and examples, see [`frontend/src/components/COMPONENTS_DOCUMENTATION.md`](frontend/src/components/COMPONENTS_DOCUMENTATION.md).
+
+---
+
+## 📁 Project Structure
+
+```
+gitnest/
+├── frontend/               # React + Vite frontend
+│   ├── src/
+│   │   ├── components/     # Reusable UI components
+│   │   │   ├── cards/           # Stat cards, user cards
+│   │   │   ├── empty-states/    # Empty state components
+│   │   │   ├── loading/         # Skeleton loaders
+│   │   │   ├── ui/              # Base UI components
+│   │   │   └── COMPONENTS_DOCUMENTATION.md
+│   │   ├── pages/          # Route-level page components
+│   │   ├── store/          # Zustand global state
+│   │   ├── hooks/          # Custom React hooks
+│   │   ├── api/            # Axios API layer
+│   │   └── utils/          # Helper functions
+├── backend/                # Express.js backend
+│   ├── config/             # DB, Redis connections
+│   ├── controllers/        # Route controllers
+│   ├── middleware/          # Auth, error handling, rate limiting
+│   ├── models/             # Mongoose schemas
+│   ├── routes/             # Express routers
+│   ├── services/           # Business logic, Socket.io
+│   ├── utils/              # Logger, response helpers
+│   └── .env.example        # Environment variable template
+└── .github/               # Issue templates, workflows, PR template
 ```
 
 
