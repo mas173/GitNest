@@ -22,7 +22,13 @@ export const protect = asyncHandler(async (req, res, next) => {
       throw new Error('JWT_SECRET is not defined in the environment variables');
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decoded.id).select('-password');
+    const user = await User.findById(decoded.id).select('-password');
+
+    if (!user) {
+      return next(new AppError('User account no longer exists', 401));
+    }
+
+    req.user = user;
     next();
   } catch (error) {
     return next(new AppError('Not authorized to access this route', 401));
