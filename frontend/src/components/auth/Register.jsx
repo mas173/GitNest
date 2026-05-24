@@ -236,6 +236,7 @@ const Register = () => {
                   <input
                     name="username"
                     type="text"
+                    placeholder="Enter your username"
                     value={formData.username}
                     onChange={handleChange}
                     aria-invalid={!!validationErrors.username}
@@ -260,6 +261,7 @@ const Register = () => {
                   <input
                     name="email"
                     type="email"
+                    placeholder="Enter your email"
                     value={formData.email}
                     onChange={handleChange}
                     aria-invalid={!!validationErrors.email}
@@ -286,6 +288,7 @@ const Register = () => {
                     <input
                       name="password"
                       type={showPassword ? "text" : "password"}
+                      placeholder="Create a strong password"
                       value={formData.password}
                       onChange={handleChange}
                       aria-invalid={!!validationErrors.password}
@@ -321,6 +324,7 @@ const Register = () => {
                     <input
                       name="confirmPassword"
                       type={showConfirmPassword ? "text" : "password"}
+                      placeholder="Confirm your password"
                       value={formData.confirmPassword}
                       onChange={handleChange}
                       aria-invalid={!!validationErrors.confirmPassword}
