@@ -33,79 +33,140 @@ const getFriendlyAuthError = (error, fallbackMessage) => {
 export const useAuthStore = create(
   persist(
     (set) => ({
+      // state
       user: null,
       token: null,
       isAuthenticated: false,
       loading: false,
       error: null,
 
+      // login
       login: async (email, password) => {
-        set({ loading: true, error: null });
+        set({
+          loading: true,
+          error: null,
+        });
+
         try {
-          const res = await loginUser({ email, password });
-          const user = extractUserData(res);
-          set({
-            user,
-            token: user?.token ?? null,
-            isAuthenticated: true,
-            loading: false,
+          const res = await loginUser({
+            email,
+            password,
           });
+
+          set({
+            user: {
+              _id: res._id,
+              username: res.username,
+              email: res.email,
+            },
+            token: res.token,
+            isAuthenticated: true,
+            error: null,
+          });
+
+          return res;
         } catch (error) {
           set({
-            error: getFriendlyAuthError(error, 'Login failed'),
+            error: extractErrorMessage(error),
+          });
+
+          throw error;
+        } finally {
+          set({
             loading: false,
           });
-          throw error;
         }
       },
 
+      // register
       register: async (userData) => {
-        set({ loading: true, error: null });
+        set({
+          loading: true,
+          error: null,
+        });
+
         try {
           const res = await registerUser(userData);
-          const user = extractUserData(res);
+
           set({
-            user,
-            token: user?.token ?? null,
+            user: {
+              _id: res._id,
+              username: res.username,
+              email: res.email,
+            },
+            token: res.token,
             isAuthenticated: true,
-            loading: false,
+            error: null,
           });
+
+          return res;
         } catch (error) {
           set({
-            error: getFriendlyAuthError(error, 'Registration failed'),
+            error: extractErrorMessage(error),
+          });
+
+          throw error;
+        } finally {
+          set({
             loading: false,
           });
-          throw error;
         }
       },
 
+      // logout
       logout: () => {
-        set({ user: null, token: null, isAuthenticated: false, error: null });
+        set({
+          user: null,
+          token: null,
+          isAuthenticated: false,
+          error: null,
+          loading: false,
+        });
       },
+
+      // clear error
       clearError: () => {
-        set({ error: null });
+        set({
+          error: null,
+        });
       },
+
+      // check auth
       checkAuth: async () => {
-        set({ loading: true, error: null });
+        set({
+          loading: true,
+          error: null,
+        });
+
         try {
           const res = await getMe();
+
           set({
-            user: extractUserData(res),
+            user: res,
             isAuthenticated: true,
-            loading: false,
           });
-        } catch {
+        } catch (error) {
           set({
             user: null,
             token: null,
             isAuthenticated: false,
+          });
+        } finally {
+          set({
             loading: false,
           });
         }
       },
     }),
     {
-      name: 'auth-storage', // local storage key
+      name: "auth-storage",
+
+      // persist only required state
+      partialize: (state) => ({
+        user: state.user,
+        token: state.token,
+        isAuthenticated: state.isAuthenticated,
+      }),
     }
   )
 );
