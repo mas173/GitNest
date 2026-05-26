@@ -15,6 +15,7 @@ import errorHandler from './middleware/errorHandler.js';
 import { requestIdMiddleware, attachRequestIdToResponse } from './middleware/requestId.js';
 import repositoryRoutes from './routes/repository.routes.js';
 import activityRoutes from './routes/activity.routes.js';
+import architectureRoutes from './routes/architectureRoutes.js';
 
 if (!process.env.JWT_SECRET) {
   console.error('FATAL: JWT_SECRET is not configured. Server cannot start securely.');
@@ -56,6 +57,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/repositories', repositoryRoutes);
 app.use('/api/v1/activities', activityRoutes);
+app.use('/api/v1/architecture', architectureRoutes);
 
 app.use((req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404, ERROR_CODES.NOT_FOUND));
@@ -63,6 +65,17 @@ app.use((req, res, next) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const startServer = async () => {
+  try {
+    await connectDB();
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Failed to connect database:', error);
+    process.exit(1);
+  }
+};
+
+startServer();

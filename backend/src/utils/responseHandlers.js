@@ -39,8 +39,11 @@ export const sendError = (
     requestId = null,
   }
 ) => {
+  const status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
+
   res.status(statusCode).json({
     success: false,
+    status,
     statusCode,
     code,
     message,

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import simpleGit from 'simple-git';
-
+import mongoose from 'mongoose';
 import Repository from '../models/Repository.model.js';
 import User from '../models/User.model.js';
 import asyncHandler from '../utils/asyncHandler.js';
@@ -13,8 +13,10 @@ import paginate, { buildPaginationMeta } from '../utils/paginate.js';
 
 // DRY helper — resolves a :username param to the owner document's _id.
 // Returns null when the username does not exist so callers can 404 cleanly.
-const resolveOwner = (username) =>
-    User.findOne({ username: username.toLowerCase() }).select('_id');
+const resolveOwner = async (username) => {
+    const owner = await User.findOne({ username: username.toLowerCase() });
+    return owner ? { _id: owner._id } : null;
+};
 
 export const createRepository = asyncHandler(async (req, res, next) => {
   const { name, description, visibility, language, topics } = req.body;
@@ -311,10 +313,6 @@ export const forkRepository = asyncHandler(
         const owner = await resolveOwner(username);
         if (!owner) return next(new AppError('Repository not found', 404));
 
-        if (!owner) {
-            return next(new AppError('Repository not found', 404));
-        }
-
         const original = await Repository.findOne({
             name: reponame,
             owner: owner._id,
@@ -339,11 +337,14 @@ export const forkRepository = asyncHandler(
         try {
             session.startTransaction();
 
-            const existing = await Repository.findOne({
+            const existingQuery = Repository.findOne({
                 name: reponame,
                 owner: req.user.id,
                 forkedFrom: original._id,
-            }).session(session);
+            });
+            const existing = typeof existingQuery?.session === 'function'
+                ? await existingQuery.session(session)
+                : await existingQuery;
 
             if (existing) {
                 await session.abortTransaction();
